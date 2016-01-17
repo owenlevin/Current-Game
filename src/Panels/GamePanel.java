@@ -444,7 +444,8 @@ public void idle(Graphics g4){
 
 		idleCount(true);
 		if(idleCount(true) > 300){
-			heroImage = ImageGet.getImage("res/Idle " + number);
+			heroImage = ImageGet.getImage("res/Idle " + secondcounter + ".png");
+			System.out.println(number);
 		}
 	}else{
 		idleCount(false);
