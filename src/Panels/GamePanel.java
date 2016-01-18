@@ -438,17 +438,31 @@ public void animation(){
 	heroImage = ImageGet.getImage("res/hero" + number + ".png");
 	
 }
+double anifirstcount = 1;
+double anisecondcount = 1;
 public void idle(Graphics g4){
 	Graphics2D g4d = (Graphics2D) g4;
 	if(idle){
-
 		idleCount(true);
 		if(idleCount(true) > 300){
-			heroImage = ImageGet.getImage("res/Idle " + number);
+			
+				anifirstcount += .1;
+				if(anifirstcount > 10){
+					anisecondcount++;
+					anifirstcount = 0;
+				}
+				if(anisecondcount > 2){
+					anisecondcount = 1;
+				}
+		
+			
+			heroImage = ImageGet.getImage("res/Idle " + (int) anisecondcount + ".png");
+			System.out.println(anisecondcount);
 		}
 	}else{
 		idleCount(false);
 	}
+	
 }
 double firstcounter;
 int secondcounter;
@@ -467,6 +481,7 @@ public int idleCount(boolean in){
 	return secondcounter;
 	
 }
+
 public void enemy(int x, int y, int health){
     BasicEnemy enemy = new BasicEnemy(x, y, 50, 50, health);  
 	basicEnemy.add(enemy);
